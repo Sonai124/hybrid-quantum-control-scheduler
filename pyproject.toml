@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hybrid-quantum-control-scheduler"
+version = "0.1.0"
+description = "Hybrid quantum-classical control-plane scheduler simulation (SimPy + optional QuTiP quantum link emulator)."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name="Sonai Biswas"}]
+license = {text="MIT"}
+
+dependencies = [
+  "simpy>=4.0.2",
+]
+
+[project.optional-dependencies]
+qutip = [
+  "qutip>=5.0.0",
+]
+dev = [
+  "ruff>=0.6",
+  "pytest>=8.0",
+]
+
+[project.scripts]
+hqcsim = "hqcsim.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

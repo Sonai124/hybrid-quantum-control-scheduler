@@ -1,0 +1,6 @@
+services:
+  sim:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    command: ["hqcsim", "run", "--policy", "credit", "--t-end", "5"]
